@@ -1,0 +1,23 @@
+services:
+  app:
+    build:
+      dockerfile: Dockerfile
+      args:
+        - JRE_VERSION=20
+    ports:
+      - 8081:8081
+    environment:
+      - GRID_URL=http://selenium:4444
+      - JDK_HTTPCLIENT_ENABLED=true
+      - RUN_DURATION=PT10m
+      - JAVA_OPTS=-Xms384m -Xmx384m -Djava.rmi.server.hostname=0.0.0.0 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.port=8081 -Dcom.sun.management.jmxremote.rmi.port=8081
+    mem_limit: 500mb
+    depends_on:
+      - selenium
+
+  selenium:
+    image: selenium/standalone-chrome:4.13
+    ports:
+      - 4444:4444
+      - 7900:7900
+    shm_size: 2g
