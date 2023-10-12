@@ -9,7 +9,7 @@ services:
     environment:
       - GRID_URL=http://selenium:4444
       - JDK_HTTPCLIENT_ENABLED=true
-      - RUN_DURATION=PT10m
+      - RUN_DURATION=PT30m
       - JAVA_OPTS=-Xms384m -Xmx384m -Djava.rmi.server.hostname=0.0.0.0 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.local.only=false -Dcom.sun.management.jmxremote.port=8081 -Dcom.sun.management.jmxremote.rmi.port=8081
     mem_limit: 500mb
     depends_on:
